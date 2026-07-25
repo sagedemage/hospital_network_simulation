@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Hospital Network Simulation",
   description: "This is a lab to configure a hospital network in Cisco Packet Tracer.",
-  base: "/hostpital_network_simulation",
+  base: "/hospital_network_simulation",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

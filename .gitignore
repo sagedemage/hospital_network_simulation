@@ -10,3 +10,5 @@ docs/.vitepress/cache
 *.xcf
 *.avif
 *.webp
+*.jpg
+*.jpeg

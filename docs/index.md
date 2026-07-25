@@ -5,22 +5,49 @@ This is a lab to configure a hospital network in Cisco Packet Tracer. This simul
 
 ## IP Address of the Routers
 R1: 
-- Interface: Se0/2/0
-	- IPv4 Address: 10.1.1.1
+- Interface: Gig0/0
+	- IPv4 Address: 192.168.2.1
 	- Subnet Mask: 255.255.255.0
-- Interface: Se0/2/1
+- Interface: Gig0/1
+	- IPv4 Address: 192.168.3.1
+	- Subnet Mask: 255.255.255.0
+- Interface: Gig0/2
+	- IPv4 Address: 10.1.1.2
+	- Subnet Mask: 255.255.255.0
+- Interface: Se0/3/0
+	- IPv4 Address: 10.1.4.1
+	- Subnet Mask: 255.255.255.0
+
+R2: 
+- Interface: Gig0/0
+	- IPv4 Address: 192.168.4.1
+	- Subnet Mask: 255.255.255.0
+- Interface: Gig0/1
+	- IPv4 Address: 192.168.5.1
+	- Subnet Mask: 255.255.255.0
+- Interface: Gig0/2
 	- IPv4 Address: 10.1.2.2
+	- Subnet Mask: 255.255.255.0
+
+R3: 
+- Interface: Gig0/0
+	- IPv4 Address: 192.168.1.1
+	- Subnet Mask: 255.255.255.0
+- Interface: Se0/3/0
+	- IPv4 Address: 10.1.4.2
+	- Subnet Mask: 255.255.255.0
+
+ISP_Router1: 
+- Interface: Gig0/0
+	- IPv4 Address: 10.1.1.1
 	- Subnet Mask: 255.255.255.0
 - Interface: Se0/3/0
 	- IPv4 Address: 10.1.3.1
 	- Subnet Mask: 255.255.255.0
 
-R2: 
-- Interface: Se0/2/0
+ISP_Router2: 
+- Interface: Gig0/0
 	- IPv4 Address: 10.1.2.1
-	- Subnet Mask: 255.255.255.0
-- Interface: Se0/2/1
-	- IPv4 Address: 10.1.1.2
 	- Subnet Mask: 255.255.255.0
 - Interface: Se0/3/0
 	- IPv4 Address: 10.1.3.2
@@ -51,58 +78,121 @@ Server2
 ## Configure IP Address of the Routers
 Configure the IP address of the interfaces of the routers.
 
-Interface Se0/2/0 on R1:
+Interface Gig0/0 on R1:
 ```
 R1# conf t
-R1(config)# int Se0/2/0
-R1(config-if)# ip add 10.1.1.1 255.255.255.0
+R1(config)# int Gig0/0
+R1(config-if)# ip add 192.168.2.1 255.255.255.0
 R1(config-if)# no shut
 R1(config-if)# exit
 ```
 
-Interface Se0/2/1 on R1:
+Interface Gig0/1 on R1:
 ```
 R1# conf t
-R1(config)# int Se0/2/1
-R1(config-if)# ip add 10.1.2.2 255.255.255.0
+R1(config)# int Gig0/1
+R1(config-if)# ip add 192.168.3.1 255.255.255.0
 R1(config-if)# no shut
 R1(config-if)# exit
+```
+
+Interface Gig0/2 on R1:
+```
+R1# conf t
+R1(config)# int Gig0/2
+R1(config-if)# ip add 10.1.1.2 255.255.255.0
+R1(config-if)# no shut
+R1(config-if)# end
 ```
 
 Interface Se0/3/0 on R1:
 ```
 R1# conf t
 R1(config)# int Se0/3/0
-R1(config-if)# ip add 10.1.3.1 255.255.255.0
+R1(config-if)# ip add 10.1.4.1 255.255.255.0
 R1(config-if)# no shut
 R1(config-if)# end
 ```
 
-Interface Se0/2/0 on R2:
+Interface Gig0/0 on R2:
 ```
 R2# conf t
-R2(config)# int Se0/2/0
-R2(config-if)# ip add 10.1.2.1 255.255.255.0
+R2(config)# int Gig0/0
+R2(config-if)# ip add 192.168.4.1 255.255.255.0
 R2(config-if)# no shut
 R2(config-if)# exit
 ```
 
-Interface Se0/2/1 on R2:
+Interface Gig0/1 on R2:
 ```
 R2# conf t
-R2(config)# int Se0/2/1
-R2(config-if)# ip add 10.1.1.2 255.255.255.0
+R2(config)# int Gig0/1
+R2(config-if)# ip add 192.168.5.1 255.255.255.0
 R2(config-if)# no shut
 R2(config-if)# exit
 ```
 
-Interface Se0/3/0 on R2:
+Interface Gig0/2 on R2:
 ```
 R2# conf t
-R2(config)# int Se0/3/0
-R2(config-if)# ip add 10.1.3.2 255.255.255.0
+R2(config)# int Gig0/2
+R2(config-if)# ip add 10.1.2.2 255.255.255.0
 R2(config-if)# no shut
-R2(config-if)# end
+R2(config-if)# exit
+```
+
+Interface Gig0/0 on R3:
+```
+R3# conf t
+R3(config)# int Gig0/0
+R3(config-if)# ip add 192.168.1.1 255.255.255.0
+R3(config-if)# no shut
+R3(config-if)# exit
+```
+
+Interface Se0/3/0 on R3:
+```
+R3# conf t
+R3(config)# int Se0/3/0
+R3(config-if)# ip add 10.1.4.2 255.255.255.0
+R3(config-if)# no shut
+R3(config-if)# exit
+```
+
+Interface Gig0/0 on ISP_Router1:
+```
+ISP_Router1# conf t
+ISP_Router1(config)# int Gig0/0
+ISP_Router1(config-if)# ip add 10.1.1.1 255.255.255.0
+ISP_Router1(config-if)# no shut
+ISP_Router1(config-if)# exit
+```
+
+Interface Se0/3/0 on ISP_Router1:
+```
+ISP_Router1# conf t
+ISP_Router1(config)# int Se0/3/0
+ISP_Router1(config-if)# ip add 10.1.3.1 255.255.255.0
+ISP_Router1(config-if)# no shut
+ISP_Router1(config-if)# exit
+```
+
+Interface Gig0/0 on ISP_Router2:
+```
+ISP_Router2# conf t
+ISP_Router2(config)# int Gig0/0
+ISP_Router2(config-if)# ip add 10.1.2.1 255.255.255.0
+ISP_Router2(config-if)# no shut
+ISP_Router2(config-if)# exit
+```
+
+Interface Se0/3/0 on ISP_Router2:
+```
+ISP_Router2# conf t
+ISP_Router2(config)# int Se0/3/0
+ISP_Router2(config-if)# ip add 10.1.3.2 255.255.255.0
+ISP_Router2(config-if)# no shut
+ISP_Router2(config-if)# exit
 ```
 
 ## Configure IP Address of the Servers
@@ -194,8 +284,7 @@ Configure OSPF on R1:
 R1# conf t
 R1(config)# router ospf 1
 R1(config-router)# network 10.1.1.0 0.0.0.255 area 0
-R1(config-router)# network 10.1.2.0 0.0.0.255 area 0
-R1(config-router)# network 192.168.1.0 0.0.0.255 area 0
+R1(config-router)# network 10.1.4.0 0.0.0.255 area 0
 R1(config-router)# network 192.168.2.0 0.0.0.255 area 0
 R1(config-router)# network 192.168.3.0 0.0.0.255 area 0
 R1(config-router)# end
@@ -205,11 +294,37 @@ Configure OSPF on R2:
 ```
 R2# conf t
 R2(config)# router ospf 1
-R2(config-router)# network 10.1.1.0 0.0.0.255 area 0
 R2(config-router)# network 10.1.2.0 0.0.0.255 area 0
 R2(config-router)# network 192.168.4.0 0.0.0.255 area 0
 R2(config-router)# network 192.168.5.0 0.0.0.255 area 0
 R2(config-router)# end
+```
+
+Configure OSPF on R3:
+```
+R3# conf t
+R3(config)# router ospf 1
+R3(config-router)# network 192.168.1.0 0.0.0.255 area 0
+R3(config-router)# network 10.1.4.0 0.0.0.255 area 0
+R3(config-router)# end
+```
+
+Configure OSPF on ISP_Router1:
+```
+ISP_Router1# conf t
+ISP_Router1(config)# router ospf 1
+ISP_Router1(config-router)# network 10.1.1.0 0.0.0.255 area 0
+ISP_Router1(config-router)# network 10.1.3.0 0.0.0.255 area 0
+ISP_Router1(config-router)# end
+```
+
+Configure OSPF on ISP_Router2:
+```
+ISP_Router2# conf t
+ISP_Router2(config)# router ospf 1
+ISP_Router2(config-router)# network 10.1.2.0 0.0.0.255 area 0
+ISP_Router2(config-router)# network 10.1.3.0 0.0.0.255 area 0
+ISP_Router2(config-router)# end
 ```
 
 ## Configure DNS and Web Servers
@@ -261,6 +376,7 @@ R1# reload
 
 Configure ACL 100 to identify interesting traffic on R1:
 ```
+R1# conf t
 R1(config)# access-list 110 permit ip 192.168.2.0 0.0.0.255 192.168.4.0 0.0.0.255
 R1(config)# access-list 110 permit ip 192.168.2.0 0.0.0.255 192.168.5.0 0.0.0.255
 R1(config)# access-list 110 permit ip 192.168.3.0 0.0.0.255 192.168.4.0 0.0.0.255
@@ -274,7 +390,7 @@ R1(config-isakmp)# encryption aes 256
 R1(config-isakmp)# authentication pre-share
 R1(config-isakmp)# group 5
 R1(config-isakmp)# exit
-R1(config)# crypto isakmp key vpnpa55 address 10.1.3.2
+R1(config)# crypto isakmp key vpnpa55 address 10.1.2.2
 ```
 
 Configure the IKE phase 2 IPsec policy on R1:
@@ -286,15 +402,15 @@ Configure the IKE phase 1 ISAKMP properties on R1:
 ```
 R1(config)# crypto map VPN-MAP 10 ipsec-isakmp
 R1(config-crypto-map)# description VPN connection to R2
-R1(config-crypto-map)# set peer 10.1.3.2
+R1(config-crypto-map)# set peer 10.1.2.2
 R1(config-crypto-map)# set transform-set VPN-SET
 R1(config-crypto-map)# match address 110
 R1(config-crypto-map)# exit
 ```
 
-Configure the VPN-MAP crypto map on the outgoing Serial 0/3/0 interface:
+Configure the VPN-MAP crypto map on the outgoing GigabitEthernet 0/2 interface:
 ```
-R1(config)# int Se0/3/0
+R1(config)# int Gig0/2
 R1(config-if)# crypto map VPN-MAP
 R1(config-if)# end
 ```
@@ -317,6 +433,7 @@ R2# reload
 
 Configure ACL 100 to identify interesting traffic on R2:
 ```
+R2# conf t
 R2(config)# access-list 110 permit ip 192.168.4.0 0.0.0.255 192.168.2.0 0.0.0.255
 R2(config)# access-list 110 permit ip 192.168.4.0 0.0.0.255 192.168.3.0 0.0.0.255
 R2(config)# access-list 110 permit ip 192.168.5.0 0.0.0.255 192.168.2.0 0.0.0.255
@@ -330,7 +447,7 @@ R2(config-isakmp)# encryption aes 256
 R2(config-isakmp)# authentication pre-share
 R2(config-isakmp)# group 5
 R2(config-isakmp)# exit
-R2(config)# crypto isakmp key vpnpa55 address 10.1.3.1
+R2(config)# crypto isakmp key vpnpa55 address 10.1.1.2
 ```
 
 Configure the IKE phase 2 IPsec policy on R2:
@@ -342,17 +459,17 @@ Configure the IKE phase 1 ISAKMP properties on R2:
 ```
 R2(config)# crypto map VPN-MAP 10 ipsec-isakmp
 R2(config-crypto-map)# description VPN connection to R1
-R2(config-crypto-map)# set peer 10.1.3.1
+R2(config-crypto-map)# set peer 10.1.1.2
 R2(config-crypto-map)# set transform-set VPN-SET
 R2(config-crypto-map)# match address 110
 R2(config-crypto-map)# exit
 ```
 
-Configure the VPN-MAP crypto map on the outgoing Serial 0/3/0 interface:
+Configure the VPN-MAP crypto map on the outgoing GigabitEthernet 0/2 interface:
 ```
-R2(config)# int Se0/3/0
+R2(config)# int Gig0/2
 R2(config-if)# crypto map VPN-MAP
-R1(config)# end
+R2(config)# end
 ```
 
 **Verify the IPSec VPN**
@@ -366,7 +483,7 @@ On PC1, go to Desktop -> Command Prompt.
 
 Ping PC5:
 ```
-C:\> ping 192.168.4.15
+C:\> ping 192.168.4.16
 ```
 
  Verify the tunnel after interesting traffic on R1:
@@ -385,7 +502,7 @@ On PC5, go to Desktop -> Command Prompt.
 
 Ping PC1:
 ```
-C:\> ping 192.168.3.14
+C:\> ping 192.168.2.15
 ```
 
  Verify the tunnel after interesting traffic on R1:
@@ -406,4 +523,19 @@ R1# copy run start
 Save the config for R2:
 ```
 R2# copy run start
+```
+
+Save the config for R3:
+```
+R3# copy run start
+```
+
+Save the config for ISP_Router1:
+```
+ISP_Router1# copy run start
+```
+
+Save the config for ISP_Router2:
+```
+ISP_Router2# copy run start
 ```

@@ -408,7 +408,7 @@ R1(config-crypto-map)# match address 110
 R1(config-crypto-map)# exit
 ```
 
-Configure the VPN-MAP crypto map on the outgoing Serial 0/3/0 interface:
+Configure the VPN-MAP crypto map on the outgoing GigabitEthernet 0/2 interface:
 ```
 R1(config)# int Gig0/2
 R1(config-if)# crypto map VPN-MAP
